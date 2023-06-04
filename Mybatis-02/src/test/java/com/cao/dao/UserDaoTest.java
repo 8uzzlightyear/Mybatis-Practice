@@ -26,17 +26,4 @@ public class UserDaoTest {
             sqlSession.close();
         }
     }
-    @Test
-    public void testGetUserById() {
-        SqlSession sqlSession = MybatisUtils.getSqlSession();
-        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        Map map = new HashMap();
-        map.put("name", "%%");
-        List<User> userList = mapper.getUserLike(map);
-        //sqlSession.commit();
-        for (User user : userList) {
-            System.out.println(user);
-        }
-        sqlSession.close();
-    }
 }

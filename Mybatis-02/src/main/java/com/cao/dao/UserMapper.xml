@@ -20,7 +20,4 @@
     <delete id="deleteUser" parameterType="int" >
         delete from user where id = #{id}
     </delete>
-    <select id="getUserLike" parameterType="Map" resultType="com.cao.pojo.User">
-        select * from user where name like #{name};
-    </select>
 </mapper>

@@ -9,6 +9,7 @@
   <name>Archetype - Mybatis-Study</name>
   <modules>
     <module>mybatis-01</module>
+      <module>Mybatis-02</module>
   </modules>
   <dependencies>
     <dependency>
