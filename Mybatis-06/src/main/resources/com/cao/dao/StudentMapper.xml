@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cao.dao.StudentMapper">
+    <!--这种连表查询并没有查出teacher这个对象，而是将teacher表中name字段映射给Teacher类的name属性，
+    因此查找结果teacher.id=0-->
+    <resultMap id="StdTch" type="student">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="teacher" javaType="Teacher">
+            <result property="name" column="tname"/>
+        </association>
+    </resultMap>
+    <select id="getStudent" resultType="student" resultMap="StdTch2">
+        select s.id id, s.name name, t.id tid from student s, teacher t where s.tid = t.id
+    </select>
+    <resultMap id="StdTch2" type="student">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="teacher" column="tid" javaType="teacher" select="getTeacher"/>
+    </resultMap>
+    <!--该查询语句可以不在接口中定义-->
+    <select id="getTeacher" resultType="teacher">
+        select * from teacher where id = ${tid}
+    </select>
+</mapper>
