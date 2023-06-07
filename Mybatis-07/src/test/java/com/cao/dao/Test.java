@@ -9,7 +9,7 @@ public class Test {
     @org.junit.Test
     public void test() {
         sqlSession = MybatisUtils.getSqlSession();
-        System.out.println(sqlSession.getMapper(TeacherMapper.class).getTeacher2(1));
+        System.out.println(sqlSession.getMapper(TeacherMapper.class).getTeacher(1));
     }
 
 }
